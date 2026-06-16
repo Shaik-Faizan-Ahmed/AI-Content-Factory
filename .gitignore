@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+.env
+
+# VS Code
+.vscode/
+
+# Generated Project Assets
+backend/storage/projects/
+
+# Audio
+*.wav
+
+# Video
+*.mp4
+
+# Images
+*.png
+*.jpg
+*.jpeg
+
+# Logs
+*.log
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Pytest
+.pytest_cache/
+
+# Build
+dist/
+build/
+
+# Node
+node_modules/
