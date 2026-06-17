@@ -13,7 +13,7 @@ from services.project_registry_service import (
 workflow = ContentWorkflow()
 
 state = ProjectState(
-    topic="who is virat kholi"
+    topic="cricket t20 world cup 2026"
 )
 
 ProjectRegistryService.register_project(

@@ -1,7 +1,4 @@
 import time
-import requests
-
-from urllib.parse import quote
 
 from models.project_state import (
     ProjectState
@@ -14,6 +11,11 @@ from services.storage_service import (
 from services.project_status_service import (
     ProjectStatusService
 )
+
+from services.image_service import (
+    ImageService
+)
+
 
 class ImageAgent:
 
@@ -60,13 +62,10 @@ Professional photography
 4k
 """
 
-            encoded_prompt = quote(
-                prompt
-            )
-
-            url = (
-                "https://image.pollinations.ai/prompt/"
-                f"{encoded_prompt}"
+            image_path = (
+                images_dir
+                /
+                f"scene_{scene_number}.png"
             )
 
             print(
@@ -75,43 +74,10 @@ Professional photography
 
             try:
 
-                response = requests.get(
-                    url,
-                    timeout=180
+                ImageService.generate_image(
+                    prompt=prompt,
+                    output_path=image_path
                 )
-
-                content_type = (
-                    response.headers.get(
-                        "content-type",
-                        ""
-                    )
-                )
-
-                if (
-                    "image"
-                    not in content_type
-                ):
-
-                    print(
-                        f"Failed Scene {scene_number}"
-                    )
-
-                    continue
-
-                image_path = (
-                    images_dir
-                    /
-                    f"scene_{scene_number}.png"
-                )
-
-                with open(
-                    image_path,
-                    "wb"
-                ) as img:
-
-                    img.write(
-                        response.content
-                    )
 
                 image_paths.append(
                     {

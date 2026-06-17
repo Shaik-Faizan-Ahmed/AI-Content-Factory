@@ -32,6 +32,18 @@ from services.project_status_service import (
     ProjectStatusService
 )
 
+from agents.thumbnail_agent import (
+    ThumbnailAgent
+)
+
+from agents.seo_agent import (
+    SEOAgent
+)
+
+from agents.publish_agent import (
+    PublishAgent
+)
+
 class ContentWorkflow:
 
     def __init__(self):
@@ -61,6 +73,18 @@ class ContentWorkflow:
 
         self.video_agent = (
             VideoAgent()
+        )
+
+        self.thumbnail_agent = (
+            ThumbnailAgent()
+        )
+
+        self.seo_agent = (
+            SEOAgent()
+        )
+        
+        self.publish_agent = (
+            PublishAgent()
         )
 
     def run(
@@ -116,6 +140,24 @@ class ContentWorkflow:
                 state.project_id
             )
 
+            state = (
+                self.thumbnail_agent.run(
+                    state
+                )
+            )  
+
+            state = (
+                self.seo_agent.run(
+                    state
+                )   
+            )
+
+            state = (
+                self.publish_agent.run(
+                    state
+                )
+            ) 
+            
             return state
 
         except Exception:

@@ -109,3 +109,66 @@ class StorageService:
         )
 
         return path
+    
+    @classmethod
+    def get_thumbnail_path(
+        cls,
+        project_id: str
+    ):
+
+        path = (
+            cls.get_project_path(
+                project_id
+            )
+            /
+            "thumbnails"
+        )
+
+        path.mkdir(
+            parents=True,
+            exist_ok=True
+        )
+
+        return path
+    
+    @classmethod
+    def get_seo_path(
+        cls,
+        project_id: str
+    ):
+
+        path = (
+            cls.get_project_path(
+                project_id
+            )
+            /
+            "seo"
+        )
+
+        path.mkdir(
+            parents=True,
+            exist_ok=True
+        )
+
+        return path
+    
+    @classmethod
+    def get_publish_path(
+        cls,
+        project_id: str
+    ):
+
+        path = (
+            cls.get_project_path(
+                project_id
+            )
+            /
+            "publish"
+        )
+
+        path.mkdir(
+            parents=True,
+            exist_ok=True
+        )
+
+        return path
