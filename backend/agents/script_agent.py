@@ -6,6 +6,9 @@ from services.gemini_service import (
     GeminiService
 )
 
+from services.project_status_service import (
+    ProjectStatusService
+)
 
 class ScriptAgent:
 
@@ -19,6 +22,13 @@ class ScriptAgent:
         self,
         state: ProjectState
     ) -> ProjectState:
+        
+        ProjectStatusService.update(
+            project_id=state.project_id,
+            status="writing_script",
+            current_step="script",
+            progress=20
+        )
 
         prompt = f"""
 You are a professional documentary writer.
@@ -34,6 +44,16 @@ Requirements:
 - Clear narration
 
 IMPORTANT:
+
+Create a SHORT script for testing.
+
+Target duration: 30 seconds.
+
+Maximum 80 words.
+
+Exactly 3 scenes.
+
+Keep explanations concise.
 
 Return ONLY narration.
 

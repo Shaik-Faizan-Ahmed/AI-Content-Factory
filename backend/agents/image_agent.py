@@ -11,6 +11,9 @@ from services.storage_service import (
     StorageService
 )
 
+from services.project_status_service import (
+    ProjectStatusService
+)
 
 class ImageAgent:
 
@@ -18,6 +21,13 @@ class ImageAgent:
         self,
         state: ProjectState
     ) -> ProjectState:
+
+        ProjectStatusService.update(
+            project_id=state.project_id,
+            status="generating_images",
+            current_step="image_generation",
+            progress=50
+        )
 
         image_paths = []
 

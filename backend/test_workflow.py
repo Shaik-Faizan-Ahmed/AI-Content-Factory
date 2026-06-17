@@ -2,20 +2,29 @@ from workflows.content_workflow import (
     ContentWorkflow
 )
 
-workflow = (
-    ContentWorkflow()
+from models.project_state import (
+    ProjectState
+)
+
+from services.project_registry_service import (
+    ProjectRegistryService
+)
+
+workflow = ContentWorkflow()
+
+state = ProjectState(
+    topic="who is virat kholi"
+)
+
+ProjectRegistryService.register_project(
+    project_id=state.project_id,
+    topic=state.topic,
+    status="queued"
 )
 
 result = workflow.run(
-    "How Black Holes Work"
+    state
 )
 
-print("\n")
-print("=" * 80)
-print("SUBTITLES")
-print("=" * 80)
-print("\n")
-
-print(
-    result.subtitle_path
-)
+print(result.project_id)
+print(result.video_path)

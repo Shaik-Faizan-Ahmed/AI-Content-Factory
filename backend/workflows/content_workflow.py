@@ -28,6 +28,10 @@ from agents.video_agent import (
     VideoAgent
 )
 
+from services.project_status_service import (
+    ProjectStatusService
+)
+
 class ContentWorkflow:
 
     def __init__(self):
@@ -61,53 +65,63 @@ class ContentWorkflow:
 
     def run(
         self,
-        topic: str
+        state: ProjectState
     ):
 
-        state = ProjectState(
-            topic=topic
-        )
+        try:
 
-        state = (
-            self.research_agent.run(
-                state
+            state = (
+                self.research_agent.run(
+                    state
+                )
             )
-        )
 
-        state = (
-            self.script_agent.run(
-                state
+            state = (
+                self.script_agent.run(
+                    state
+                )
             )
-        )
 
-        state = (
-            self.scene_planner_agent.run(
-                state
+            state = (
+                self.scene_planner_agent.run(
+                    state
+                )
             )
-        )
-        
-        state = (
-            self.image_agent.run(
-                state
-            )
-        )
-        
-        state = (
-            self.voice_agent.run(
-                state
-            )
-        )
-        
-        state = (
-            self.subtitle_agent.run(
-                state
-            )
-        )
-        
-        state = (
-            self.video_agent.run(
-                state
-            )
-        )
 
-        return state
+            state = (
+                self.image_agent.run(
+                    state
+                )
+            )
+
+            state = (
+                self.voice_agent.run(
+                    state
+                )
+            )
+
+            state = (
+                self.subtitle_agent.run(
+                    state
+                )
+            )
+
+            state = (
+                self.video_agent.run(
+                    state
+                )
+            )
+
+            ProjectStatusService.mark_completed(
+                state.project_id
+            )
+
+            return state
+
+        except Exception:
+
+            ProjectStatusService.mark_failed(
+                state.project_id
+            )
+
+            raise

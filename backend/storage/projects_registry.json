@@ -1,0 +1,32 @@
+[
+    {
+        "project_id": "8b8aafe5-c046-420e-85a7-bdf12b86ec68",
+        "topic": "How Rainbows Form",
+        "status": "completed",
+        "created_at": "2026-06-16T22:04:02.717283"
+    },
+    {
+        "project_id": "test-project",
+        "topic": "Test Topic",
+        "status": "researching",
+        "current_step": "research",
+        "progress": 10,
+        "created_at": "2026-06-17T11:46:26.221523"
+    },
+    {
+        "project_id": "3af1f9ae-3922-4e76-8864-0a649c1a6409",
+        "topic": "who is virat kholi",
+        "status": "completed",
+        "current_step": "completed",
+        "progress": 100,
+        "created_at": "2026-06-17T13:37:52.760949"
+    },
+    {
+        "project_id": "90e89ea0-013f-4795-8de0-f2925a10d216",
+        "topic": "F1 explained",
+        "status": "completed",
+        "current_step": "completed",
+        "progress": 100,
+        "created_at": "2026-06-17T13:47:03.301683"
+    }
+]

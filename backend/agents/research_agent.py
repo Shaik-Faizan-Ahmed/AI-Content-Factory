@@ -6,6 +6,10 @@ from services.gemini_service import (
     GeminiService
 )
 
+from services.project_status_service import (
+    ProjectStatusService
+)
+
 
 class ResearchAgent:
 
@@ -19,6 +23,13 @@ class ResearchAgent:
         self,
         state: ProjectState
     ) -> ProjectState:
+
+        ProjectStatusService.update(
+            project_id=state.project_id,
+            status="researching",
+            current_step="research",
+            progress=10
+        )
 
         prompt = f"""
 You are a research analyst.

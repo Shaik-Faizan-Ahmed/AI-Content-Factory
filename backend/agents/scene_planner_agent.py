@@ -18,6 +18,10 @@ from services.project_state_service import (
     ProjectStateService
 )
 
+from services.project_status_service import (
+    ProjectStatusService
+)
+
 class ScenePlannerAgent:
 
     def __init__(self):
@@ -30,6 +34,13 @@ class ScenePlannerAgent:
         self,
         state: ProjectState
     ) -> ProjectState:
+
+        ProjectStatusService.update(
+            project_id=state.project_id,
+            status="planning_scenes",
+            current_step="scene_planning",
+            progress=30
+        )
 
         prompt = f"""
 You are a scene planning expert.

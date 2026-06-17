@@ -14,6 +14,9 @@ from services.script_cleaner import (
     ScriptCleaner
 )
 
+from services.project_status_service import (
+    ProjectStatusService
+)
 
 class VoiceAgent:
 
@@ -29,6 +32,13 @@ class VoiceAgent:
         self,
         state: ProjectState
     ) -> ProjectState:
+
+        ProjectStatusService.update(
+            project_id=state.project_id,
+            status="generating_voice",
+            current_step="voice_generation",
+            progress=65
+        )
 
         cleaned_script = (
             ScriptCleaner.clean(

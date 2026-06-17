@@ -18,6 +18,9 @@ from services.ffmpeg_service import (
     FFmpegService
 )
 
+from services.project_status_service import (
+    ProjectStatusService
+)
 
 class VideoAgent:
 
@@ -25,6 +28,13 @@ class VideoAgent:
         self,
         state: ProjectState
     ) -> ProjectState:
+
+        ProjectStatusService.update(
+            project_id=state.project_id,
+            status="assembling_video",
+            current_step="video_generation",
+            progress=90
+        )
 
         project_dir = (
             StorageService

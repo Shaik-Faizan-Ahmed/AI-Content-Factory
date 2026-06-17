@@ -10,6 +10,9 @@ from services.subtitle_service import (
     SubtitleService
 )
 
+from services.project_status_service import (
+    ProjectStatusService
+)
 
 class SubtitleAgent:
 
@@ -17,6 +20,13 @@ class SubtitleAgent:
         self,
         state: ProjectState
     ) -> ProjectState:
+
+        ProjectStatusService.update(
+            project_id=state.project_id,
+            status="generating_subtitles",
+            current_step="subtitle_generation",
+            progress=75
+        )
 
         subtitle_dir = (
             StorageService
