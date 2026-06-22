@@ -1,72 +1,18 @@
 [
     {
-        "project_id": "8b8aafe5-c046-420e-85a7-bdf12b86ec68",
-        "topic": "How Rainbows Form",
-        "status": "completed",
-        "created_at": "2026-06-16T22:04:02.717283"
-    },
-    {
-        "project_id": "test-project",
-        "topic": "Test Topic",
-        "status": "researching",
-        "current_step": "research",
-        "progress": 10,
-        "created_at": "2026-06-17T11:46:26.221523"
-    },
-    {
-        "project_id": "3af1f9ae-3922-4e76-8864-0a649c1a6409",
-        "topic": "who is virat kholi",
+        "project_id": "b4c51cd8-eedd-484b-956a-ebdf0ef46da7",
+        "topic": "who is messi?",
         "status": "completed",
         "current_step": "completed",
         "progress": 100,
-        "created_at": "2026-06-17T13:37:52.760949"
+        "created_at": "2026-06-22T12:55:29.970050"
     },
     {
-        "project_id": "90e89ea0-013f-4795-8de0-f2925a10d216",
-        "topic": "F1 explained",
+        "project_id": "21f81f60-6bdc-4d3e-ad29-aae365da2fc9",
+        "topic": "who is Cristiano Ronaldo?",
         "status": "completed",
         "current_step": "completed",
         "progress": 100,
-        "created_at": "2026-06-17T13:47:03.301683"
-    },
-    {
-        "project_id": "f68f5cc5-2e37-4a85-8c4b-33807261361f",
-        "topic": "cvr college of engineering",
-        "status": "generating_thumbnail",
-        "current_step": "thumbnail_generation",
-        "progress": 95,
-        "created_at": "2026-06-17T14:46:26.911576"
-    },
-    {
-        "project_id": "2d304c92-4711-40fe-8149-2096ea988c4e",
-        "topic": "cricket t20 world cup 2026",
-        "status": "failed",
-        "current_step": "failed",
-        "progress": 0,
-        "created_at": "2026-06-17T14:57:18.494912"
-    },
-    {
-        "project_id": "849dc286-18cb-4921-bc2e-cce279667b85",
-        "topic": "cricket t20 world cup 2026",
-        "status": "failed",
-        "current_step": "failed",
-        "progress": 0,
-        "created_at": "2026-06-17T15:09:19.865739"
-    },
-    {
-        "project_id": "3ee7d261-c8a2-4268-9609-2f494b57d69b",
-        "topic": "cricket t20 world cup 2026",
-        "status": "failed",
-        "current_step": "failed",
-        "progress": 0,
-        "created_at": "2026-06-17T15:11:08.114365"
-    },
-    {
-        "project_id": "16659f9d-18cb-4752-91c1-75072e2dd741",
-        "topic": "cricket t20 world cup 2026",
-        "status": "ready_to_publish",
-        "current_step": "publishing",
-        "progress": 99,
-        "created_at": "2026-06-17T15:16:19.363329"
+        "created_at": "2026-06-22T13:25:38.989957"
     }
 ]

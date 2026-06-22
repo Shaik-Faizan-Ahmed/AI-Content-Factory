@@ -36,10 +36,9 @@ Return ONLY valid JSON:
 {{
     "title": "...",
     "description": "...",
-    "tags": [
-        "...",
-        "..."
-    ]
+    "tags": ["...", "..."],
+    "category": "...",
+    "hashtags": ["#...", "#..."]
 }}
 """
 

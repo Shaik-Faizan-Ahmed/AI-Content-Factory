@@ -15,6 +15,18 @@ class ProjectState:
 
     topic: str = ""
 
+    video_type: str = "educational"
+
+    duration: int = 60
+
+    voice: str = "narrator"
+
+    style: str = "documentary"
+
+    language: str = "english"
+
+    mode: str = "review"
+
     # --------------------------------------------------
     # Workflow Status
     # --------------------------------------------------

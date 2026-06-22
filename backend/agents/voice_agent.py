@@ -1,3 +1,4 @@
+from pathlib import Path
 import wave
 
 from piper import PiperVoice
@@ -18,15 +19,13 @@ from services.project_status_service import (
     ProjectStatusService
 )
 
+MODEL_PATH = Path(__file__).resolve().parent.parent.parent / "models" / "piper" / "en_US-lessac-medium.onnx"
+
 class VoiceAgent:
 
     def __init__(self):
 
-        self.voice = (
-            PiperVoice.load(
-                "../models/piper/en_US-lessac-medium.onnx"
-            )
-        )
+        self.voice = PiperVoice.load(str(MODEL_PATH))
 
     def run(
         self,

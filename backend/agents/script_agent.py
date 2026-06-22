@@ -10,6 +10,7 @@ from services.project_status_service import (
     ProjectStatusService
 )
 
+
 class ScriptAgent:
 
     def __init__(self):
@@ -22,7 +23,7 @@ class ScriptAgent:
         self,
         state: ProjectState
     ) -> ProjectState:
-        
+
         ProjectStatusService.update(
             project_id=state.project_id,
             status="writing_script",
@@ -30,30 +31,132 @@ class ScriptAgent:
             progress=20
         )
 
-        prompt = f"""
-You are a professional documentary writer.
+        duration_rules = {
 
-Using the research below,
-create an educational script.
+            30: (
+                "Maximum 80 words.\n"
+                "Exactly 3 scenes."
+            ),
+
+            60: (
+                "Maximum 150 words.\n"
+                "Exactly 5 scenes."
+            ),
+
+            90: (
+                "Maximum 220 words.\n"
+                "Exactly 7 scenes."
+            ),
+
+            180: (
+                "Maximum 450 words.\n"
+                "Exactly 10 scenes."
+            ),
+
+            300: (
+                "Maximum 700 words.\n"
+                "Exactly 15 scenes."
+            ),
+
+            600: (
+                "Maximum 1400 words.\n"
+                "Exactly 20 scenes."
+            )
+        }
+
+        style_rules = {
+
+            "educational":
+            """
+Educational tone.
+
+Explain concepts clearly.
+
+Use simple language.
+
+Focus on teaching.
+""",
+
+            "documentary":
+            """
+Cinematic documentary narration.
+
+Professional tone.
+
+Fact driven.
+
+Slightly dramatic.
+""",
+
+            "storytelling":
+            """
+Narrative storytelling style.
+
+Create curiosity.
+
+Use engaging storytelling.
+""",
+
+            "news":
+            """
+News anchor style.
+
+Professional reporting tone.
+
+Present information clearly.
+""",
+
+            "product_ad":
+            """
+Marketing style.
+
+Highlight benefits.
+
+Include persuasive language.
+
+Strong call to action.
+""",
+
+            "podcast_clip":
+            """
+Conversational tone.
+
+Natural speaking style.
+
+Podcast-like delivery.
+"""
+        }
+
+        duration_instruction = (
+            duration_rules.get(
+                state.duration,
+                duration_rules[60]
+            )
+        )
+
+        style_instruction = (
+            style_rules.get(
+                state.video_type.lower(),
+                style_rules["educational"]
+            )
+        )
+
+        prompt = f"""
+You are a professional script writer.
+
+Language:
+{state.language}
+
+Video Type:
+{state.video_type}
 
 Requirements:
 
-- Engaging
-- Factual
-- Educational
-- Clear narration
+{style_instruction}
+
+{duration_instruction}
 
 IMPORTANT:
-
-Create a SHORT script for testing.
-
-Target duration: 30 seconds.
-
-Maximum 80 words.
-
-Exactly 3 scenes.
-
-Keep explanations concise.
 
 Return ONLY narration.
 
@@ -73,8 +176,7 @@ Narration
 [SCENE_2]
 Narration
 
-[SCENE_3]
-Narration
+Continue until all scenes are completed.
 
 Research:
 

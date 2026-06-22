@@ -22,7 +22,7 @@ class SEOAgent:
             project_id=state.project_id,
             status="generating_seo",
             current_step="seo_generation",
-            progress=98
+            progress=95
         )
 
         state.seo_data = (

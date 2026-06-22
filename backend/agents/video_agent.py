@@ -32,8 +32,8 @@ class VideoAgent:
         ProjectStatusService.update(
             project_id=state.project_id,
             status="assembling_video",
-            current_step="video_generation",
-            progress=90
+            current_step="video_assembly",
+            progress=80
         )
 
         project_dir = (
@@ -190,6 +190,13 @@ class VideoAgent:
 
         state.video_path = (
             str(final_video)
+        )
+
+        ProjectStatusService.update(
+            project_id=state.project_id,
+            status="video_ready",
+            current_step="video_review",
+            progress=85
         )
 
         print(
